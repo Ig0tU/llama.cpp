@@ -7,7 +7,8 @@
 	import {
 		ChatSidebar,
 		DialogConversationTitleUpdate,
-		DialogChatSettings
+		DialogChatSettings,
+		AnimatedBackground
 	} from '$lib/components/app';
 	import { isLoading } from '$lib/stores/chat.svelte';
 	import { conversationsStore, activeMessages } from '$lib/stores/conversations.svelte';
@@ -242,6 +243,8 @@
 		onConfirm={handleTitleUpdateConfirm}
 		onCancel={handleTitleUpdateCancel}
 	/>
+
+	<AnimatedBackground />
 
 	<Sidebar.Provider bind:open={sidebarOpen}>
 		<div class="flex h-screen w-full" style:height="{innerHeight}px">

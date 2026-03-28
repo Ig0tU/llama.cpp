@@ -468,3 +468,11 @@ export { default as DialogMcpResources } from './DialogMcpResources.svelte';
  * ```
  */
 export { default as DialogMcpResourcePreview } from './DialogMcpResourcePreview.svelte';
+
+/**
+ * **DialogUnslothHelp** - Unsloth conversion help dialog
+ *
+ * Information dialog providing guidance on common Unsloth-to-GGUF conversion
+ * issues and best practices.
+ */
+export { default as DialogUnslothHelp } from './DialogUnslothHelp.svelte';

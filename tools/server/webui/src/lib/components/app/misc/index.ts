@@ -43,3 +43,11 @@ export { default as TruncatedText } from './TruncatedText.svelte';
  * Supports special keys like shift, cmd, and custom text.
  */
 export { default as KeyboardShortcutInfo } from './KeyboardShortcutInfo.svelte';
+
+/**
+ * **AnimatedBackground** - Animated liquid glass-morphic background
+ *
+ * Implements a wavy, organic "liquid glass" effect over a dark charcoal
+ * background using CSS animations and SVG filters.
+ */
+export { default as AnimatedBackground } from './AnimatedBackground.svelte';
