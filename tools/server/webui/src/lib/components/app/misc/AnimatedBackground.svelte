@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-
 	let { class: className = '' } = $props();
 </script>
 
@@ -56,43 +54,43 @@
 
 	.gradients-container > div {
 		position: absolute;
-		width: 80%;
-		height: 80%;
-		top: 10%;
-		left: 10%;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
 		background: radial-gradient(circle at center, var(--color) 0, rgba(0, 0, 0, 0) 50%) no-repeat;
-		mix-blend-mode: screen;
-		opacity: 0.6;
+		mix-blend-mode: hard-light;
+		opacity: 0.4;
 	}
 
 	.g1 {
-		--color: rgba(40, 40, 40, 0.8);
+		--color: rgba(50, 50, 80, 0.6);
 		animation: moveVertical 30s ease infinite;
 	}
 
 	.g2 {
-		--color: rgba(60, 60, 60, 0.8);
+		--color: rgba(60, 30, 60, 0.6);
 		animation: moveInCircle 20s reverse infinite;
 		transform-origin: calc(50% - 400px);
 	}
 
 	.g3 {
-		--color: rgba(30, 30, 30, 0.8);
+		--color: rgba(30, 60, 80, 0.6);
 		animation: moveInCircle 40s linear infinite;
-		top: calc(50% - 40%);
-		left: calc(50% - 40%);
+		top: calc(50% - 50%);
+		left: calc(50% - 50%);
 		transform-origin: calc(50% + 400px);
 	}
 
 	.g4 {
-		--color: rgba(50, 50, 50, 0.8);
+		--color: rgba(80, 50, 50, 0.6);
 		animation: moveHorizontal 40s ease infinite;
-		opacity: 0.7;
+		opacity: 0.5;
 	}
 
 	.g5 {
-		--color: rgba(70, 70, 70, 0.8);
-		animation: moveInCircle 20s ease infinite;
+		--color: rgba(60, 60, 60, 0.8);
+		animation: moveInCircle 25s ease infinite;
 		width: 100%;
 		height: 100%;
 		top: -50%;

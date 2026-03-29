@@ -32,10 +32,26 @@
 					<pre class="overflow-x-auto rounded-lg bg-muted p-3 font-mono text-xs">
 model.save_pretrained_merged("model_16bit", tokenizer, save_method = "merged_16bit")</pre
 					>
+					<p class="mt-2 text-sm text-muted-foreground">
+						If you experience OOM (Out Of Memory) crashes during saving, try reducing the GPU
+						memory usage:
+					</p>
+					<pre class="overflow-x-auto rounded-lg bg-muted p-3 font-mono text-xs">
+model.save_pretrained_merged(..., maximum_memory_usage = 0.5)</pre
+					>
 				</section>
 
 				<section class="space-y-3">
-					<h3 class="text-base font-semibold">2. Use "GGUF My Repo" Space</h3>
+					<h3 class="text-base font-semibold">2. Check Tokenizer & SOS Tokens</h3>
+					<p class="text-sm text-muted-foreground">
+						Common generation issues (gibberish or early stops) are often caused by "start of
+						sequence" (SOS) token mismatches. Ensure you check if your model requires or lacks
+						these tokens in your chat template.
+					</p>
+				</section>
+
+				<section class="space-y-3">
+					<h3 class="text-base font-semibold">3. Use "GGUF My Repo" Space</h3>
 					<p class="text-sm text-muted-foreground">
 						After saving as 16-bit and uploading to Hugging Face, use the official GGUF
 						conversion space. This avoids local setup issues with llama.cpp:
@@ -51,7 +67,7 @@ model.save_pretrained_merged("model_16bit", tokenizer, save_method = "merged_16b
 				</section>
 
 				<section class="space-y-3">
-					<h3 class="text-base font-semibold">3. Update llama.cpp scripts</h3>
+					<h3 class="text-base font-semibold">4. Update llama.cpp scripts</h3>
 					<p class="text-sm text-muted-foreground">
 						If converting locally, ensure you have the latest <code>convert_hf_to_gguf.py</code> from
 						the llama.cpp repository. Unsloth often relies on recent changes in the conversion scripts.
@@ -62,7 +78,7 @@ python3 convert_hf_to_gguf.py ./model_16bit --outfile model.gguf</pre
 				</section>
 
 				<section class="space-y-3">
-					<h3 class="text-base font-semibold">4. Check for NaN values</h3>
+					<h3 class="text-base font-semibold">5. Check for NaN values</h3>
 					<p class="text-sm text-muted-foreground">
 						If your converted model produces gibberish, check if your fine-tuning had loss spikes
 						resulting in NaNs. Quantization (especially 4-bit) is very sensitive to weight
