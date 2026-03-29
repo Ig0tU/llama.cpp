@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Search, SquarePen, X } from '@lucide/svelte';
-	import { KeyboardShortcutInfo } from '$lib/components/app';
+	import { Search, SquarePen, X, ExternalLink, Wrench } from '@lucide/svelte';
+	import { KeyboardShortcutInfo, DialogUnslothHelp } from '$lib/components/app';
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
 	import { McpLogo } from '$lib/components/app';
@@ -22,6 +22,7 @@
 	let searchInput: HTMLInputElement | null = $state(null);
 
 	const chatSettingsDialog = getChatSettingsDialogContext();
+	let unslothHelpOpen = $state(false);
 
 	function handleSearchModeDeactivate() {
 		isSearchModeActive = false;
@@ -98,5 +99,36 @@
 				MCP Servers
 			</div>
 		</Button>
+
+		<div class="px-2 pt-4 pb-2">
+			<p class="text-[10px] font-semibold tracking-wider text-muted-foreground uppercase">Tools</p>
+		</div>
+
+		<Button
+			class="w-full justify-between backdrop-blur-none! hover:[&>kbd]:opacity-100"
+			href="https://huggingface.co/spaces/ggml-org/gguf-my-repo"
+			target="_blank"
+			variant="ghost"
+		>
+			<div class="flex items-center gap-2">
+				<ExternalLink class="h-4 w-4" />
+
+				GGUF My Repo
+			</div>
+		</Button>
+
+		<Button
+			class="w-full justify-between backdrop-blur-none! hover:[&>kbd]:opacity-100"
+			onclick={() => (unslothHelpOpen = true)}
+			variant="ghost"
+		>
+			<div class="flex items-center gap-2">
+				<Wrench class="h-4 w-4" />
+
+				Fix Unsloth Issues
+			</div>
+		</Button>
 	{/if}
 </div>
+
+<DialogUnslothHelp bind:open={unslothHelpOpen} />
